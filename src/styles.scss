@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@import './variable.scss';
+
+body {
+ background-color: $standardBackground !important; 
+ text-shadow: 0px 0px 20px $primaryColor !important;
+ color: $primaryColor !important;
+ font-family: $fontFamily !important;
+}
+.comp-min-height {
+  min-height: 60vh;
+}
+.head {
+  font-size: 15vmin;
+}
+.sub-head {
+  font-size: 4vmin;
+}
+.standard-container {
+  width: 100%;
+  background-color: $standardBackground;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.standard-shadow {
+  box-shadow: 0.2rem 0.2rem 1rem $primaryColor;
+  animation: flicker-shadow 1.5s linear forwards;
+}
+@keyframes flicker-shadow {
+  0% {
+    box-shadow: none;
+  }
+  25% {
+    box-shadow: 0.2rem 0.2rem 1rem $primaryColor;
+  }
+  40% {
+    box-shadow: none;
+  }
+  60% {
+    box-shadow: 0.2rem 0.2rem 1rem $primaryColor;
+  }
+  85% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0.2rem 0.2rem 1rem $primaryColor;
+  }
+}
+.standard-elevated-container {
+    position: absolute;
+    top: 6%;
+    z-index: 1;
+    height: 90vh;
+    width: 90%;
+  }
+  input {
+    box-shadow: 0.2rem 0.2rem 1rem $primaryColor;
+    background: inherit;
+    color: $primaryColor;
+    border: 1px solid $primaryColor;
+    width: 80%;
+  }
+  label {
+    display: block !important;
+    font-size: 2.5vmin;
+  }
+
+@media (min-width: 576px) {
+  label {
+    font-size: 3vmin;
+  }
+  button {
+    font-size: 4.5vmin !important;
+  }
+}
+button {
+  background: $primaryColor;
+  color: $standardBackground;
+  border: none;
+  border-radius: 5px !important;
+  font-size: 3vmin !important;
+}
