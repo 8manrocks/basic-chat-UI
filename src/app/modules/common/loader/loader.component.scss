@@ -1,0 +1,16 @@
+@import '../../../../variable.scss';
+.loader{
+	border-radius:50%;
+	width:30px;
+	height:30px;
+	border:2px solid $primaryColor;
+	border-right:2px solid $primaryColorBrighter;
+	animation:spin 1s linear infinite;
+	position:absolute;
+}
+
+@keyframes spin{
+	100%{
+		transform:rotate3D(1,.25,.75,360deg)  rotateZ(360deg);
+	}
+}

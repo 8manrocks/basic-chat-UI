@@ -15,38 +15,24 @@ export class Interceptor implements HttpInterceptor {
         let key: string|null = null;
         let endpoint: string|null = null;
         try {
-            const val = this.utils.handleNullOrUndefined(req.headers.get('loaderFor')).split('_');
-            key = val[0];
-            endpoint = val[1];
+             key = this.utils.handleNullOrUndefined(req.headers.get('loaderFor'));
         } catch (error) {
             key = null;
-            endpoint = null;
         }
         this.utils.loaderActivatedFor(key);
         req.headers.delete('loadedFor');
         return next.handle(req)
         .pipe(
-            filter(res => 
-                (
-                    (res instanceof HttpResponse)
-                     )
-                ),
+            filter((res) => 
+                    res instanceof HttpResponse     
+                  ),
             tap((res) => {
-                console.log(this.utils.handleNullOrUndefined(
-                    (res as HttpResponse<any>).url), this.utils.handleNullOrUndefined(endpoint),
-                     this.utils.handleNullOrUndefined(
-                    (res as HttpResponse<any>).url)
-                    .includes(this.utils.handleNullOrUndefined(endpoint)), 'kys scene h')
-                if (this.utils.handleNullOrUndefined(
-                    (res as HttpResponse<any>).url)
-                    .includes(this.utils.handleNullOrUndefined(endpoint)
-                    )) {
-                    this.utils.loaderDeActivatedFor(key);
-                }
-            },
+                this.utils.loaderDeActivatedFor(key);  
+                        },
             (err) => {
                 this.utils.loaderDeActivatedFor(key);
-            })
-        )
+                    }
+                )
+            )
     }
 }

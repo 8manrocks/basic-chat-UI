@@ -15,7 +15,7 @@ export class RootService {
 
   getEnvUrls(): Observable<Env> {
     let headers = new HttpHeaders();
-    headers = headers.append('loaderFor', 'app-root'.concat('_').concat(environment.envUrl));
+    headers = headers.append('loaderFor', 'app-root');
     return (this.http.get(environment.envUrl, {headers}) as Observable<Env>);
   }
   getPing(): Observable<any> {
